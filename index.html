@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colette Leung | CV Editor</title>
+    <title>Colette Leung | Global Total Rewards Director</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&family=Fira+Code:wght@300;400&display=swap" rel="stylesheet">
@@ -41,49 +41,38 @@
         .toolbar {
             position: fixed;
             bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 30px;
             z-index: 1000;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(10px);
-            padding: 12px 24px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 12px;
             border: 1px solid var(--accent);
-            display: flex;
-            gap: 20px;
             box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
         }
 
         .btn {
-            background: none;
-            border: 1px solid transparent;
-            color: var(--crystal-white);
+            background: var(--accent);
+            border: none;
+            color: #000;
             font-family: var(--mono);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            font-weight: bold;
             cursor: pointer;
-            padding: 5px 15px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 8px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background: var(--glass);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #000;
-            font-weight: bold;
-        }
-
-        .btn-primary:hover {
             background: #fff;
-            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--prism-1);
         }
 
         /* --- Background Effects --- */
@@ -144,7 +133,6 @@
             line-height: 0.9;
             position: relative;
             margin-bottom: 20px;
-            outline: none;
         }
 
         .refraction-title span {
@@ -162,7 +150,6 @@
             color: var(--accent);
             border-top: 1px solid var(--border);
             padding-top: 20px;
-            outline: none;
         }
 
         /* --- Sidebar --- */
@@ -199,7 +186,6 @@
             margin: 0 5px 8px 0;
             display: inline-block;
             transition: all 0.3s ease;
-            outline: none;
         }
 
         .skill-tag:hover {
@@ -215,7 +201,6 @@
             max-width: 800px;
             line-height: 1.6;
             color: rgba(255,255,255,0.85);
-            outline: none;
         }
 
         .experience-card {
@@ -240,7 +225,6 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 5px;
-            outline: none;
         }
 
         .company-meta {
@@ -250,12 +234,10 @@
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
-            outline: none;
         }
 
         .bullet-list {
             list-style: none;
-            outline: none;
         }
 
         .bullet-list li {
@@ -290,13 +272,6 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* --- Editable Focus Styles --- */
-        [contenteditable="true"]:focus {
-            outline: 1px dashed var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-
         /* --- PRINT / ATS OPTIMIZATION --- */
         @media print {
             body {
@@ -325,8 +300,6 @@
                 color: #000 !important;
                 margin-bottom: 10px !important;
             }
-
-            .refraction-title::before { display: none !important; }
 
             .contact-bar {
                 color: #333 !important;
@@ -370,6 +343,7 @@
                 border-left: none !important;
                 padding-left: 0 !important;
                 margin-bottom: 25px !important;
+                page-break-inside: avoid;
             }
 
             .experience-card::before { display: none !important; }
@@ -403,16 +377,13 @@
                 clip-path: none !important;
                 padding: 10px !important;
             }
-
-            .accomplishments h4 {
-                color: #444 !important;
-            }
         }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
             .refraction-title { font-size: 3.5rem; }
             header { padding-top: 50px; }
+            .toolbar { bottom: 20px; right: 20px; width: calc(100% - 40px); display: flex; justify-content: center; }
         }
     </style>
 </head>
@@ -433,25 +404,18 @@
     <div class="prism-shard shard-1"></div>
     <div class="prism-shard shard-2"></div>
 
-    <!-- Toolbar for Controls -->
     <div class="toolbar no-print">
-        <div style="font-size: 0.7rem; color: #666; display: flex; align-items: center; padding-right: 10px; border-right: 1px solid #333;">
-            CV EDITOR MODE
-        </div>
-        <button class="btn" onclick="toggleEdit()">
-            <span id="edit-text">Lock Content</span>
-        </button>
-        <button class="btn btn-primary" onclick="window.print()">
-            Export (PDF)
+        <button class="btn" onclick="window.print()">
+            Download PDF
         </button>
     </div>
 
     <div class="container">
         <header>
-            <h1 class="refraction-title" contenteditable="true" spellcheck="false">
+            <h1 class="refraction-title">
                 <span>Colette Leung</span>
             </h1>
-            <div class="contact-bar" contenteditable="true" spellcheck="false">
+            <div class="contact-bar">
                 <span>AMSTERDAM, NL</span>
                 <span>+31 682 858 269</span>
                 <span>COLETTE.LEUNG@GMAIL.COM</span>
@@ -462,34 +426,34 @@
         <aside>
             <div class="sidebar-section">
                 <div class="section-label">Expertise</div>
-                <div class="skill-group" id="expertise-list">
-                    <span class="skill-tag" contenteditable="true">Total Rewards Strategy</span>
-                    <span class="skill-tag" contenteditable="true">Exec Comp</span>
-                    <span class="skill-tag" contenteditable="true">LTI/Equity</span>
-                    <span class="skill-tag" contenteditable="true">Sales Incentives</span>
-                    <span class="skill-tag" contenteditable="true">Salary Structures</span>
-                    <span class="skill-tag" contenteditable="true">Pay Equity</span>
-                    <span class="skill-tag" contenteditable="true">Benefits</span>
-                    <span class="skill-tag" contenteditable="true">People Analytics</span>
-                    <span class="skill-tag" contenteditable="true">M&A Integration</span>
+                <div class="skill-group">
+                    <span class="skill-tag">Total Rewards Strategy</span>
+                    <span class="skill-tag">Executive Compensation</span>
+                    <span class="skill-tag">LTI & Equity Design</span>
+                    <span class="skill-tag">Sales Incentive Plans</span>
+                    <span class="skill-tag">Salary Structures</span>
+                    <span class="skill-tag">Pay Equity & Compliance</span>
+                    <span class="skill-tag">Global Benefits</span>
+                    <span class="skill-tag">People Analytics</span>
+                    <span class="skill-tag">M&A Integration</span>
                 </div>
             </div>
 
             <div class="sidebar-section">
                 <div class="section-label">Tools & Tech</div>
                 <div class="skill-group">
-                    <span class="skill-tag" contenteditable="true">Visier</span>
-                    <span class="skill-tag" contenteditable="true">BigQuery</span>
-                    <span class="skill-tag" contenteditable="true">SAP SuccessFactors</span>
-                    <span class="skill-tag" contenteditable="true">Workday</span>
-                    <span class="skill-tag" contenteditable="true">Deel</span>
-                    <span class="skill-tag" contenteditable="true">Sequoia</span>
+                    <span class="skill-tag">Visier</span>
+                    <span class="skill-tag">BigQuery</span>
+                    <span class="skill-tag">SuccessFactors</span>
+                    <span class="skill-tag">Workday</span>
+                    <span class="skill-tag">Deel</span>
+                    <span class="skill-tag">Sequoia</span>
                 </div>
             </div>
 
             <div class="sidebar-section">
                 <div class="section-label">Languages</div>
-                <div class="skill-group" style="font-family: var(--mono); font-size: 0.8rem;" contenteditable="true">
+                <div class="skill-group" style="font-family: var(--mono); font-size: 0.8rem;">
                     English (Native)<br>
                     Cantonese / Mandarin<br>
                     French<br>
@@ -499,7 +463,7 @@
 
             <div class="sidebar-section">
                 <div class="section-label">Education</div>
-                <div style="font-size: 0.9rem;" contenteditable="true">
+                <div style="font-size: 0.9rem;">
                     <strong>Honours B.Commerce (2:1)</strong><br>
                     University of Ottawa<br>
                     <span style="color: var(--accent); font-family: var(--mono); font-size: 0.7rem;">FINANCE & STATISTICS</span>
@@ -508,27 +472,26 @@
         </aside>
 
         <main>
-            <section class="summary-box" contenteditable="true">
-                Total Rewards leader with <strong>15+ years of experience</strong> in high-growth technology environments. Strategic operator known for aligning incentives and rewards to drive performance, retention, and financial discipline. Proven track record of modernizing legacy rewards into scalable, in-house platforms across globally distributed organizations.
+            <section class="summary-box">
+                Total Rewards leader with <strong>15+ years of experience</strong> in high-growth technology environments. Strategic operator known for aligning incentives and rewards to drive performance, retention, and financial discipline. Track record of modernizing legacy rewards into scalable, in-house platforms across globally distributed organizations.
             </section>
 
             <div class="section-label">Professional Experience</div>
 
-            <!-- Chainlink -->
             <div class="experience-card">
-                <div class="job-title" contenteditable="true">Director of Total Rewards</div>
-                <div class="company-meta" contenteditable="true">
+                <div class="job-title">Director of Total Rewards</div>
+                <div class="company-meta">
                     <span>CHAINLINK LABS (Remote)</span>
                     <span>APR 2024 — PRESENT</span>
                 </div>
-                <ul class="bullet-list" contenteditable="true">
+                <ul class="bullet-list">
                     <li>Lead global Total Rewards (compensation, benefits, LTI) for a remote-first blockchain leader with 700+ employees in 50+ countries.</li>
                     <li>Advise executive leadership on reward strategies using market data and predictive analytics.</li>
                     <li>Partner with Finance and Legal to deliver cost-predictable, compliant rewards aligned to token strategy.</li>
                 </ul>
                 <div class="accomplishments">
                     <h4>Key Accomplishments</h4>
-                    <ul class="bullet-list" contenteditable="true">
+                    <ul class="bullet-list">
                         <li>Designed and launched <strong>Complink</strong>, a proprietary LTI system supporting 1,200+ users, eliminating spreadsheet risk.</li>
                         <li>Harmonized 3 global LTI programs into one unified design with 100% employee acceptance.</li>
                         <li>Implemented Visier and BigQuery to standardize compensation and headcount metrics.</li>
@@ -536,62 +499,47 @@
                 </div>
             </div>
 
-            <!-- Uber -->
             <div class="experience-card">
-                <div class="job-title" contenteditable="true">Head of International Compensation</div>
-                <div class="company-meta" contenteditable="true">
+                <div class="job-title">Head of International Compensation</div>
+                <div class="company-meta">
                     <span>UBER (Amsterdam)</span>
                     <span>JAN 2020 — MAR 2024</span>
                 </div>
-                <ul class="bullet-list" contenteditable="true">
+                <ul class="bullet-list">
                     <li>Managed compensation programs across 60+ markets in APAC, EMEA, and LATAM.</li>
                     <li>Designed global sales incentive standards and governance frameworks for Uber Eats and Uber Ads.</li>
                     <li>Oversaw compliance with pay regulations and the company's pay equity commitment.</li>
                 </ul>
                 <div class="accomplishments">
                     <h4>Key Accomplishments</h4>
-                    <ul class="bullet-list" contenteditable="true">
+                    <ul class="bullet-list">
                         <li>Led global compensation cycles, improving cycle efficiency and governance through new tooling.</li>
                         <li>Led compensation workstreams for 3 major M&A deals from due diligence to post-merger integration.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Deloitte -->
             <div class="experience-card">
-                <div class="job-title" contenteditable="true">Rewards Lead / Manager</div>
-                <div class="company-meta" contenteditable="true">
+                <div class="job-title">Rewards Lead / Manager</div>
+                <div class="company-meta">
                     <span>DELOITTE CONSULTING (NL & HK)</span>
                     <span>JUL 2016 — DEC 2019</span>
                 </div>
-                <ul class="bullet-list" contenteditable="true">
+                <ul class="bullet-list">
                     <li>Led the change management of a "rating-less" performance and reward model for a 30+ operating company group.</li>
                     <li>Advised on a new Total Rewards framework for a major Dutch bank, including flexible benefits.</li>
                     <li>Directed M&A due diligence for cross-border acquisitions, uncovering risks in retention and equity awards.</li>
                 </ul>
             </div>
 
-            <!-- Earlier -->
             <div class="experience-card">
-                <div class="job-title" contenteditable="true">Business Development Manager</div>
-                <div class="company-meta" contenteditable="true">
-                    <span>ROLLING ARRAYS CONSULTING (Singapore)</span>
-                    <span>APR 2015 — JUN 2016</span>
-                </div>
-                <ul class="bullet-list" contenteditable="true">
-                    <li>Led SAP SuccessFactors implementations for a conglomerate across 28 countries.</li>
-                    <li>Built a sales pipeline of $1M and secured projects totaling $250k in fees.</li>
-                </ul>
-            </div>
-
-            <div class="experience-card">
-                <div class="job-title" contenteditable="true">Senior Analyst, Rewards & Talent</div>
-                <div class="company-meta" contenteditable="true">
+                <div class="job-title">Senior Analyst, Rewards & Talent</div>
+                <div class="company-meta">
                     <span>WILLIS TOWERS WATSON (Hong Kong)</span>
                     <span>SEP 2010 — MAR 2015</span>
                 </div>
-                <ul class="bullet-list" contenteditable="true">
-                    <li>Awarded the Chairman Award (2014) for outstanding contributions (90 recipients out of 14,000).</li>
+                <ul class="bullet-list">
+                    <li>Awarded the Chairman Award (2014) for outstanding contributions globally.</li>
                     <li>Specialized in rewards, talent, and communications consulting for global clients.</li>
                     <li>Took a sabbatical to travel across Central Asia and work in a winery in Southern France.</li>
                 </ul>
@@ -613,48 +561,24 @@
             }
         });
 
-        // Edit Toggle Functionality
-        let isEditable = true;
-        function toggleEdit() {
-            isEditable = !isEditable;
-            const elements = document.querySelectorAll('[contenteditable]');
-            const btnText = document.getElementById('edit-text');
-            
-            elements.forEach(el => {
-                el.contentEditable = isEditable;
-            });
+        // Intersection Observer for entry animations
+        window.addEventListener('load', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
 
-            btnText.innerText = isEditable ? 'Lock Content' : 'Edit Content';
-            
-            if(!isEditable) {
-                // Save flash effect
-                document.body.style.boxShadow = "inset 0 0 100px rgba(0,242,255,0.1)";
-                setTimeout(() => document.body.style.boxShadow = "none", 500);
-            }
-        }
-
-        // Prevent accidental new lines in single-line fields
-        document.querySelectorAll('.job-title, .refraction-title, .skill-tag').forEach(el => {
-            el.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    el.blur();
-                }
+            document.querySelectorAll('.experience-card, .sidebar-section').forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                observer.observe(el);
             });
         });
-
-        // Initialize animations on load
-        window.onload = () => {
-            document.querySelectorAll('.experience-card').forEach((card, i) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1}s`;
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100);
-            });
-        };
     </script>
 </body>
 </html>
